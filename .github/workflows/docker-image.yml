@@ -2,20 +2,17 @@ name: Docker test Image
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-
   build:
-
-    runs-on: node:slim
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile.dev --tag test-image
-    - name: Run tests
-      run: docker run -e CI=true test-image npm run test -- --coverage
-    
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile.dev --tag test-image
+      - name: Run tests
+        run: docker run -e CI=true test-image npm run test -- --coverage
