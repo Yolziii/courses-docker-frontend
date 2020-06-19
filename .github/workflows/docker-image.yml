@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      env:
-        DOCKER_HUB_SECRET: ${{ secrets.YOLZIII_DOCKERHUB_ACCESS_TOKEN }}
       - uses: actions/checkout@v2
       - name: Docker login
+        env:
+          DOCKER_HUB_SECRET: ${{ secrets.YOLZIII_DOCKERHUB_ACCESS_TOKEN }}
         run: docker login --username yolziii --password $DOCKER_HUB_SECRET
       - name: Build the Docker image
         run: docker build . --file Dockerfile.dev --tag test-image
