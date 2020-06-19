@@ -12,7 +12,7 @@ jobs:
 
     steps:
       env:
-        DOCKER_HUB_SECRET: ${{ secrets.YOLZIII_DOCKERHUB_TOKEN }}
+        DOCKER_HUB_SECRET: ${{ secrets.YOLZIII_DOCKERHUB_ACCESS_TOKEN }}
       - uses: actions/checkout@v2
       - name: Docker login
         run: docker login --username yolziii --password $DOCKER_HUB_SECRET
